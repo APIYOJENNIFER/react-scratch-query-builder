@@ -10,7 +10,16 @@
     "lint:fix": "npm run lint -- --fix",
     "prettier": "npx prettier src --check",
     "prettier:fix": "npm run prettier -- --write",
-    "format": "npm run prettier:fix && npm run lint:fix"
+    "format": "npm run prettier:fix && npm run lint:fix",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": "npm run lint:fix"
   },
   "author": "Jennifer O. Apiyo",
   "license": "ISC",
@@ -38,6 +47,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.4.3",
