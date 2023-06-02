@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 import Logical from './Logical';
 import GeneralButton from './GeneralButton';
+import updateRulesList from '../helper';
+import Rule from './Rule';
 
 const Query = () => {
   const [queryObject, setQueryObject] = useState({
@@ -14,6 +16,13 @@ const Query = () => {
     setQueryObject({ ...queryObject, combinator: logical });
   };
 
+  const addRule = () => {
+    const updatedRulesList = updateRulesList(queryObject);
+    setQueryObject({ ...queryObject, rules: updatedRulesList.updatedRules });
+  };
+
+  const handleDelete = () => {};
+
   return (
     <div className="App">
       <div className="App-heading">
@@ -22,7 +31,14 @@ const Query = () => {
       <hr />
       <div className="App-top-section">
         <Logical onLogicalChange={(event) => handleLogicalChange(event)} />
-        <GeneralButton className="btn-add-rule" buttonText="ADD RULE" />
+        <GeneralButton
+          className="btn-add-rule"
+          buttonText="ADD RULE"
+          onClick={addRule}
+        />
+      </div>
+      <div className="rules">
+        <Rule rules={queryObject.rules} onDelete={handleDelete} />
       </div>
     </div>
   );
