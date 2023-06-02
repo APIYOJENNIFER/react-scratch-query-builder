@@ -1,5 +1,5 @@
-import React from "react";
-import logicalOperators from "../utils";
+import React from 'react';
+import logicalOperators from '../utils';
 
 interface LogicalProps {
   onLogicalChange: (logical: string) => void;

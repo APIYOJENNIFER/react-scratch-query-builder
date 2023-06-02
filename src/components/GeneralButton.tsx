@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface ButtonProps {
   className: string;
@@ -6,9 +6,9 @@ interface ButtonProps {
 }
 
 const GeneralButton = ({ ...props }: ButtonProps) => (
-    <button className={props.className} type="button">
-      {props.buttonText}
-    </button>
-  );
+  <button className={props.className} type="button">
+    {props.buttonText}
+  </button>
+);
 
 export default GeneralButton;

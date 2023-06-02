@@ -1,2 +1,2 @@
-const logicalOperators = ["AND", "OR"];
+const logicalOperators = ['AND', 'OR'];
 export default logicalOperators;

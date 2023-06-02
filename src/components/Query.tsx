@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { nanoid } from "nanoid";
-import Logical from "./Logical";
-import GeneralButton from "./GeneralButton";
+import React, { useState } from 'react';
+import { nanoid } from 'nanoid';
+import Logical from './Logical';
+import GeneralButton from './GeneralButton';
 
 const Query = () => {
   const [queryObject, setQueryObject] = useState({
     id: nanoid(),
-    combinator: "AND",
+    combinator: 'AND',
     rules: [],
   });
 
