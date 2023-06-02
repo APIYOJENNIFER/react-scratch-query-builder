@@ -1,0 +1,10 @@
+html,
+body,
+#app {
+  height: 100%;
+}
+body {
+  font-family: "Times New Roman", Times, serif;
+  display: flex;
+  justify-content: center;
+}

@@ -1,12 +1,7 @@
 import React from "react";
 import "./App.css";
+import Query from "./components/Query";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>React Query Builder From Scratch With TypeScript</h1>
-    </div>
-  );
-}
+const App = () => <Query />;
 
 export default App;
