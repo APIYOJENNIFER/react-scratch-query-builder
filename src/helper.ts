@@ -1,6 +1,20 @@
 import { nanoid } from 'nanoid';
 
-const updateRulesList = (queryObject) => {
+export interface QueryObject {
+  id: string;
+  combinator: string;
+  rules: {
+    id: string;
+    field: string;
+    operator: string;
+    value: string;
+    placeHolder: string;
+    isValid: boolean;
+    errorMessage: string;
+  }[];
+}
+
+export const updateRulesList = (queryObject: QueryObject) => {
   const ruleObject = {
     id: nanoid(),
     field: 'First Name',
@@ -18,4 +32,3 @@ const updateRulesList = (queryObject) => {
     updatedRules,
   };
 };
-export default updateRulesList;

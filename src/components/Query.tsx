@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 import Logical from './Logical';
 import GeneralButton from './GeneralButton';
-import updateRulesList from '../helper';
+import { updateRulesList, QueryObject } from '../helper';
 import Rule from './Rule';
 
 const Query = () => {
-  const [queryObject, setQueryObject] = useState({
+  const [queryObject, setQueryObject] = useState<QueryObject>({
     id: nanoid(),
     combinator: 'AND',
     rules: [],
