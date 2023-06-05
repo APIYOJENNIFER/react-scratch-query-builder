@@ -7,6 +7,7 @@ import {
   QueryObject,
   changeInputPlaceHolder,
   validateInput,
+  deleteRule,
 } from '../helper';
 import Rule from './Rule';
 
@@ -71,7 +72,14 @@ const Query = () => {
     });
   };
 
-  const handleDelete = () => {};
+  const handleDelete = (id) => {
+    const deleteResult = deleteRule(queryObject, id);
+
+    setQueryObject({
+      ...queryObject,
+      rules: deleteResult.filteredRules,
+    });
+  };
 
   return (
     <div className="App">

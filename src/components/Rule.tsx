@@ -14,7 +14,7 @@ interface RuleProps {
   onFieldChange: (event: string, id: string) => void;
   onOperatorChange: (event: string, id: string) => void;
   onValueChange: (event: string, id: string) => void;
-  onDelete: () => void;
+  onDelete: (id: string) => void;
 }
 const Rule = ({ ...props }: RuleProps) => (
   <>
@@ -24,7 +24,7 @@ const Rule = ({ ...props }: RuleProps) => (
         onFieldChange={(event) => props.onFieldChange(event, item.id)}
         onOperatorChange={(event) => props.onOperatorChange(event, item.id)}
         onValueChange={(event) => props.onValueChange(event, item.id)}
-        onDelete={props.onDelete}
+        onDelete={() => props.onDelete(item.id)}
         placeHolder={item.placeHolder}
         value={item.value}
         isValid={item.isValid}

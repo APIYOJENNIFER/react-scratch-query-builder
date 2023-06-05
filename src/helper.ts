@@ -33,6 +33,17 @@ export const updateRulesList = (queryObject: QueryObject) => {
   };
 };
 
+export const deleteRule = (queryObject: QueryObject, id: string) => {
+  const newQueryObject = queryObject;
+  const filteredRules = newQueryObject.rules.filter((rule) => rule.id !== id);
+
+  newQueryObject.rules = filteredRules;
+
+  return {
+    filteredRules,
+  };
+};
+
 export const changeInputPlaceHolder = (field: string) => {
   let placeHolder = '';
   if (field === 'First Name') {
