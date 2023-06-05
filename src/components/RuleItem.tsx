@@ -6,13 +6,14 @@ import Value from './Value';
 
 interface RuleItemProps {
   onFieldChange: (event: string) => void;
+  onOperatorChange: (event: string) => void;
   onDelete: () => void;
   placeHolder: string;
 }
 const RuleItem = ({ ...props }: RuleItemProps) => (
   <div className="rule-item">
     <Field onFieldChange={props.onFieldChange} />
-    <Operator />
+    <Operator onOperatorChange={props.onOperatorChange} />
     <div className="div-input-error">
       <div>
         <Value placeHolder={props.placeHolder} />

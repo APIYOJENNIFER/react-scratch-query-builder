@@ -12,6 +12,7 @@ interface RuleProps {
     errorMessage: string;
   }[];
   onFieldChange: (event: string, id: string) => void;
+  onOperatorChange: (event: string, id: string) => void;
   onDelete: () => void;
 }
 const Rule = ({ ...props }: RuleProps) => (
@@ -20,6 +21,7 @@ const Rule = ({ ...props }: RuleProps) => (
       <RuleItem
         key={item.id}
         onFieldChange={(event) => props.onFieldChange(event, item.id)}
+        onOperatorChange={(event) => props.onOperatorChange(event, item.id)}
         onDelete={props.onDelete}
         placeHolder={item.placeHolder}
       />
