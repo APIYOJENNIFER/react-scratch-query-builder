@@ -21,6 +21,23 @@ const Query = () => {
     setQueryObject({ ...queryObject, rules: updatedRulesList.updatedRules });
   };
 
+  const handleFieldChange = (field, idx) => {
+    setQueryObject({
+      ...queryObject,
+      rules: queryObject.rules.map((rule) =>
+        rule.id === idx
+          ? {
+              ...rule,
+              field,
+              isValid: true,
+              errorMessage: '',
+              value: '',
+            }
+          : rule
+      ),
+    });
+  };
+
   const handleDelete = () => {};
 
   return (
@@ -38,7 +55,11 @@ const Query = () => {
         />
       </div>
       <div className="rules">
-        <Rule rules={queryObject.rules} onDelete={handleDelete} />
+        <Rule
+          rules={queryObject.rules}
+          onFieldChange={handleFieldChange}
+          onDelete={handleDelete}
+        />
       </div>
     </div>
   );

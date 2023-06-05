@@ -5,11 +5,12 @@ import Field from './Field';
 import Value from './Value';
 
 interface RuleItemProps {
+  onFieldChange: (event: string) => void;
   onDelete: () => void;
 }
 const RuleItem = ({ ...props }: RuleItemProps) => (
   <div className="rule-item">
-    <Field />
+    <Field onFieldChange={props.onFieldChange} />
     <Operator />
     <div className="div-input-error">
       <div>
