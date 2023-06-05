@@ -7,8 +7,10 @@ import Value from './Value';
 interface RuleItemProps {
   onFieldChange: (event: string) => void;
   onOperatorChange: (event: string) => void;
+  onValueChange: (event: string) => void;
   onDelete: () => void;
   placeHolder: string;
+  value;
 }
 const RuleItem = ({ ...props }: RuleItemProps) => (
   <div className="rule-item">
@@ -16,7 +18,11 @@ const RuleItem = ({ ...props }: RuleItemProps) => (
     <Operator onOperatorChange={props.onOperatorChange} />
     <div className="div-input-error">
       <div>
-        <Value placeHolder={props.placeHolder} />
+        <Value
+          placeHolder={props.placeHolder}
+          onValueChange={props.onValueChange}
+          value={props.value}
+        />
         <GeneralButton
           className="btn-delete-rule"
           buttonText="DELETE"

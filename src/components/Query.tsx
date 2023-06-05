@@ -53,6 +53,20 @@ const Query = () => {
     });
   };
 
+  const handleValueChange = (value, idx) => {
+    setQueryObject({
+      ...queryObject,
+      rules: queryObject.rules.map((rule) =>
+        rule.id === idx
+          ? {
+              ...rule,
+              value,
+            }
+          : rule
+      ),
+    });
+  };
+
   const handleDelete = () => {};
 
   return (
@@ -74,6 +88,7 @@ const Query = () => {
           rules={queryObject.rules}
           onFieldChange={handleFieldChange}
           onOperatorChange={handleOperatorChange}
+          onValueChange={handleValueChange}
           onDelete={handleDelete}
         />
       </div>

@@ -13,6 +13,7 @@ interface RuleProps {
   }[];
   onFieldChange: (event: string, id: string) => void;
   onOperatorChange: (event: string, id: string) => void;
+  onValueChange: (event: string, id: string) => void;
   onDelete: () => void;
 }
 const Rule = ({ ...props }: RuleProps) => (
@@ -22,8 +23,10 @@ const Rule = ({ ...props }: RuleProps) => (
         key={item.id}
         onFieldChange={(event) => props.onFieldChange(event, item.id)}
         onOperatorChange={(event) => props.onOperatorChange(event, item.id)}
+        onValueChange={(event) => props.onValueChange(event, item.id)}
         onDelete={props.onDelete}
         placeHolder={item.placeHolder}
+        value={item.value}
       />
     ))}
   </>
