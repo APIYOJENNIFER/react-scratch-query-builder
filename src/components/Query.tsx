@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 import Logical from './Logical';
 import GeneralButton from './GeneralButton';
-import { updateRulesList, QueryObject } from '../helper';
+import {
+  updateRulesList,
+  QueryObject,
+  changeInputPlaceHolder,
+} from '../helper';
 import Rule from './Rule';
 
 const Query = () => {
@@ -22,6 +26,7 @@ const Query = () => {
   };
 
   const handleFieldChange = (field, idx) => {
+    const placeHolder = changeInputPlaceHolder(field);
     setQueryObject({
       ...queryObject,
       rules: queryObject.rules.map((rule) =>
@@ -32,6 +37,7 @@ const Query = () => {
               isValid: true,
               errorMessage: '',
               value: '',
+              placeHolder,
             }
           : rule
       ),

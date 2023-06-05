@@ -32,3 +32,24 @@ export const updateRulesList = (queryObject: QueryObject) => {
     updatedRules,
   };
 };
+
+export const changeInputPlaceHolder = (field: string) => {
+  let placeHolder = '';
+  if (field === 'First Name') {
+    placeHolder = 'E.g John';
+  }
+  if (field === 'Last Name') {
+    placeHolder = 'E.g Doe';
+  }
+  if (field === 'Age') {
+    placeHolder = 'E.g 10';
+  }
+  if (field === 'Level') {
+    placeHolder = 'E.g 1289';
+  }
+  if (field === 'Enrollment Year') {
+    placeHolder = 'E.g 2021';
+  }
+
+  return placeHolder;
+};

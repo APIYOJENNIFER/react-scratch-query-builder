@@ -1,4 +1,9 @@
 import React from 'react';
 
-const Value = () => <input className="input-value" />;
+interface ValueProps {
+  placeHolder;
+}
+const Value = ({ ...props }: ValueProps) => (
+  <input className="input-value" placeholder={props.placeHolder} />
+);
 export default Value;

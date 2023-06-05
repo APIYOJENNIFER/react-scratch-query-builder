@@ -21,6 +21,7 @@ const Rule = ({ ...props }: RuleProps) => (
         key={item.id}
         onFieldChange={(event) => props.onFieldChange(event, item.id)}
         onDelete={props.onDelete}
+        placeHolder={item.placeHolder}
       />
     ))}
   </>
