@@ -27,6 +27,8 @@ const Rule = ({ ...props }: RuleProps) => (
         onDelete={props.onDelete}
         placeHolder={item.placeHolder}
         value={item.value}
+        isValid={item.isValid}
+        errorMessage={item.errorMessage}
       />
     ))}
   </>

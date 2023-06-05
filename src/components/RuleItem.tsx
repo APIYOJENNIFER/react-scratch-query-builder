@@ -3,6 +3,7 @@ import Operator from './Operator';
 import GeneralButton from './GeneralButton';
 import Field from './Field';
 import Value from './Value';
+import Error from './Error';
 
 interface RuleItemProps {
   onFieldChange: (event: string) => void;
@@ -11,6 +12,8 @@ interface RuleItemProps {
   onDelete: () => void;
   placeHolder: string;
   value;
+  isValid;
+  errorMessage;
 }
 const RuleItem = ({ ...props }: RuleItemProps) => (
   <div className="rule-item">
@@ -29,6 +32,7 @@ const RuleItem = ({ ...props }: RuleItemProps) => (
           onClick={props.onDelete}
         />
       </div>
+      <Error isValid={props.isValid} errorMessage={props.errorMessage} />
     </div>
   </div>
 );

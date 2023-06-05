@@ -47,6 +47,12 @@
   display: grid;
 }
 
+.error-output {
+  font-weight: 500;
+  color: rgb(169, 43, 43);
+  padding: 2px;
+}
+
 .rules {
   background-color: white;
   margin: 0px 10px 10px 10px;

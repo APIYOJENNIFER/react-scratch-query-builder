@@ -6,6 +6,7 @@ import {
   updateRulesList,
   QueryObject,
   changeInputPlaceHolder,
+  validateInput,
 } from '../helper';
 import Rule from './Rule';
 
@@ -54,6 +55,7 @@ const Query = () => {
   };
 
   const handleValueChange = (value, idx) => {
+    const validationResult = validateInput(queryObject, value, idx);
     setQueryObject({
       ...queryObject,
       rules: queryObject.rules.map((rule) =>
@@ -61,6 +63,8 @@ const Query = () => {
           ? {
               ...rule,
               value,
+              isValid: validationResult.isValid,
+              errorMessage: validationResult.errorMessage,
             }
           : rule
       ),
