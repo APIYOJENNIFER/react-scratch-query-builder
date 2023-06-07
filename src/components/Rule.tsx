@@ -1,16 +1,9 @@
 import React from 'react';
 import RuleItem from './RuleItem';
+import { Rules } from '../helper';
 
 interface RuleProps {
-  rules: {
-    id: string;
-    field: string;
-    operator: string;
-    value: string;
-    placeHolder: string;
-    isValid: boolean;
-    errorMessage: string;
-  }[];
+  rules: Rules[];
   onFieldChange: (event: string, id: string) => void;
   onOperatorChange: (event: string, id: string) => void;
   onValueChange: (event: string, id: string) => void;
