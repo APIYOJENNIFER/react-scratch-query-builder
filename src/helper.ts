@@ -65,7 +65,7 @@ export const changeInputPlaceHolder = (field: string) => {
   return placeHolder;
 };
 
-const checkIfInputIsValid = (inputString: string, reg) => {
+const checkIfInputIsValid = (inputString: string, reg: RegExp) => {
   const isValid = inputString.length === 0 || reg.test(inputString.trim());
 
   return isValid;
