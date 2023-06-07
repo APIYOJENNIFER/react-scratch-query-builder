@@ -1,7 +1,23 @@
 import { nanoid } from 'nanoid';
 import { QueryObject, Rule } from './types';
 
-const updateRulesList = (queryObject: QueryObject): Rule[] => {
+export interface QueryObject {
+  id: string;
+  combinator: string;
+  rules: {
+    id: string;
+    field: string;
+    operator: string;
+    value: string;
+    placeHolder: string;
+    isValid: boolean;
+    errorMessage: string;
+    residentId: string;
+    nonResidentId: string;
+  }[];
+}
+
+export const updateRulesList = (queryObject: QueryObject) => {
   const ruleObject = {
     id: nanoid(),
     field: 'First Name',
@@ -10,6 +26,8 @@ const updateRulesList = (queryObject: QueryObject): Rule[] => {
     placeHolder: 'E.g John',
     isValid: true,
     errorMessage: '',
+    residentId: nanoid(),
+    nonResidentId: nanoid(),
   };
   queryObject.rules.push(ruleObject);
 
@@ -122,7 +140,14 @@ const filterObject = (queryObject: QueryObject): QueryObject => {
   const filteredObject = {
     ...queryObject,
     rules: queryObject.rules.map((item) => {
-      const { isValid, errorMessage, placeHolder, ...newRuleObject } = item;
+      const {
+        isValid,
+        errorMessage,
+        placeHolder,
+        residentId,
+        nonResidentId,
+        ...newRuleObject
+      } = item;
 
       return newRuleObject;
     }),

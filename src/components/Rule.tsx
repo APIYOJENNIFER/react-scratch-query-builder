@@ -15,6 +15,10 @@ const Rule: React.FunctionComponent<RuleProps> = ({ ...props }) => (
         value={item.value}
         isValid={item.isValid}
         errorMessage={item.errorMessage}
+        field={item.field}
+        id={item.id}
+        residentId={item.residentId}
+        nonResidentId={item.nonResidentId}
       />
     ))}
   </>

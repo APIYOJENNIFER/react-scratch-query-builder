@@ -14,6 +14,10 @@ interface RuleItemProps {
   value: string;
   isValid: boolean;
   errorMessage: string;
+  field;
+  id;
+  residentId;
+  nonResidentId;
 }
 const RuleItem: React.FunctionComponent<RuleItemProps> = ({ ...props }) => (
   <div className="rule-item">
@@ -25,6 +29,10 @@ const RuleItem: React.FunctionComponent<RuleItemProps> = ({ ...props }) => (
           placeHolder={props.placeHolder}
           onValueChange={props.onValueChange}
           value={props.value}
+          field={props.field}
+          id={props.id}
+          residentId={props.residentId}
+          nonResidentId={props.nonResidentId}
         />
         <GeneralButton
           className="btn-delete-rule"

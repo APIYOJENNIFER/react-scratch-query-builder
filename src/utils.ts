@@ -5,6 +5,7 @@ const studentsField = [
   'Age',
   'Level',
   'Enrollment Year',
+  'Housing',
 ];
 const comparisonOperators = ['=', '!=', '<', '>'];
 
