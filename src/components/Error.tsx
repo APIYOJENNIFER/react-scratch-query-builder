@@ -4,7 +4,7 @@ interface ErrorProps {
   isValid: boolean;
   errorMessage: string;
 }
-const Error = ({ ...props }: ErrorProps) => (
+const Error: React.FunctionComponent<ErrorProps> = ({ ...props }) => (
   <>
     {!props.isValid && (
       <small className="error-output">{props.errorMessage}</small>

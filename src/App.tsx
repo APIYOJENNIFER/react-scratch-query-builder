@@ -3,6 +3,6 @@ import './App.css';
 import Query from './components/Query';
 import './Rule.css';
 
-const App = () => <Query />;
+const App: React.FunctionComponent = () => <Query />;
 
 export default App;

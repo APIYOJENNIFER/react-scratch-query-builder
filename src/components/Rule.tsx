@@ -16,7 +16,7 @@ interface RuleProps {
   onValueChange: (event: string, id: string) => void;
   onDelete: (id: string) => void;
 }
-const Rule = ({ ...props }: RuleProps) => (
+const Rule: React.FunctionComponent<RuleProps> = ({ ...props }) => (
   <>
     {props.rules.map((item) => (
       <RuleItem

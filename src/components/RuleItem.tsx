@@ -15,7 +15,7 @@ interface RuleItemProps {
   isValid: boolean;
   errorMessage: string;
 }
-const RuleItem = ({ ...props }: RuleItemProps) => (
+const RuleItem: React.FunctionComponent<RuleItemProps> = ({ ...props }) => (
   <div className="rule-item">
     <Field onFieldChange={props.onFieldChange} />
     <Operator onOperatorChange={props.onOperatorChange} />

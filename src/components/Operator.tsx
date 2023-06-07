@@ -4,7 +4,7 @@ import { comparisonOperators } from '../utils';
 interface OperatorProps {
   onOperatorChange: (event: string) => void;
 }
-const Operator = ({ ...props }: OperatorProps) => {
+const Operator: React.FunctionComponent<OperatorProps> = ({ ...props }) => {
   const operatorList = comparisonOperators.map((item) => (
     <option key={item}>{item}</option>
   ));

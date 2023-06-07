@@ -4,7 +4,7 @@ import { studentsField } from '../utils';
 interface FieldProps {
   onFieldChange: (event: string) => void;
 }
-const Field = ({ ...props }: FieldProps) => {
+const Field: React.FunctionComponent<FieldProps> = ({ ...props }) => {
   const fieldList = studentsField.map((item) => (
     <option key={item}>{item}</option>
   ));

@@ -5,7 +5,7 @@ interface ValueProps {
   placeHolder: string;
   value: string;
 }
-const Value = ({ ...props }: ValueProps) => (
+const Value: React.FunctionComponent<ValueProps> = ({ ...props }) => (
   <input
     className="input-value"
     value={props.value}

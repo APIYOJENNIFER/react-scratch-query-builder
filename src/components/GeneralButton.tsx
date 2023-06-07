@@ -6,7 +6,7 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-const GeneralButton = ({ ...props }: ButtonProps) => (
+const GeneralButton: React.FunctionComponent<ButtonProps> = ({ ...props }) => (
   <button className={props.className} type="button" onClick={props.onClick}>
     {props.buttonText}
   </button>

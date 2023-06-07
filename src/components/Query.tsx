@@ -11,7 +11,7 @@ import {
 } from '../helper';
 import Rule from './Rule';
 
-const Query = () => {
+const Query: React.FunctionComponent = () => {
   const [queryObject, setQueryObject] = useState<QueryObject>({
     id: nanoid(),
     combinator: 'AND',

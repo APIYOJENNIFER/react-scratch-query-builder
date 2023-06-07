@@ -5,7 +5,7 @@ interface LogicalProps {
   onLogicalChange: (logical: string) => void;
 }
 
-const Logical = ({ ...props }: LogicalProps) => {
+const Logical: React.FunctionComponent<LogicalProps> = ({ ...props }) => {
   const logicalList = logicalOperators.map((item) => (
     <option key={item}>{item}</option>
   ));
