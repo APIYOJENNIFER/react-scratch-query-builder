@@ -11,9 +11,9 @@ interface RuleItemProps {
   onValueChange: (event: string) => void;
   onDelete: () => void;
   placeHolder: string;
-  value;
-  isValid;
-  errorMessage;
+  value: string;
+  isValid: boolean;
+  errorMessage: string;
 }
 const RuleItem = ({ ...props }: RuleItemProps) => (
   <div className="rule-item">

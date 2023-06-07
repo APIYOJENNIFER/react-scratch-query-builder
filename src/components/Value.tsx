@@ -2,8 +2,8 @@ import React from 'react';
 
 interface ValueProps {
   onValueChange: (event: string) => void;
-  placeHolder;
-  value;
+  placeHolder: string;
+  value: string;
 }
 const Value = ({ ...props }: ValueProps) => (
   <input

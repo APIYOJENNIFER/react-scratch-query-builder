@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface ErrorProps {
-  isValid;
-  errorMessage;
+  isValid: boolean;
+  errorMessage: string;
 }
 const Error = ({ ...props }: ErrorProps) => (
   <>
