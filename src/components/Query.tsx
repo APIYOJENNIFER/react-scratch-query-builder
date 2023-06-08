@@ -18,16 +18,16 @@ const Query: React.FunctionComponent = () => {
     rules: [],
   });
 
-  const handleLogicalChange = (logical) => {
+  const handleLogicalChange = (logical): void => {
     setQueryObject({ ...queryObject, combinator: logical });
   };
 
-  const addRule = () => {
+  const addRule = (): void => {
     const updatedRulesList = updateRulesList(queryObject);
-    setQueryObject({ ...queryObject, rules: updatedRulesList.updatedRules });
+    setQueryObject({ ...queryObject, rules: updatedRulesList });
   };
 
-  const handleFieldChange = (field, idx) => {
+  const handleFieldChange = (field, idx): void => {
     const placeHolder = changeInputPlaceHolder(field);
     setQueryObject({
       ...queryObject,
@@ -46,7 +46,7 @@ const Query: React.FunctionComponent = () => {
     });
   };
 
-  const handleOperatorChange = (operator, idx) => {
+  const handleOperatorChange = (operator, idx): void => {
     setQueryObject({
       ...queryObject,
       rules: queryObject.rules.map((rule) =>
@@ -55,8 +55,8 @@ const Query: React.FunctionComponent = () => {
     });
   };
 
-  const handleValueChange = (value, idx) => {
-    const validationResult = validateInput(queryObject, value, idx);
+  const handleValueChange = (value, idx): void => {
+    const [isValid, errorMessage] = validateInput(queryObject, value, idx);
     setQueryObject({
       ...queryObject,
       rules: queryObject.rules.map((rule) =>
@@ -64,20 +64,20 @@ const Query: React.FunctionComponent = () => {
           ? {
               ...rule,
               value,
-              isValid: validationResult.isValid,
-              errorMessage: validationResult.errorMessage,
+              isValid,
+              errorMessage,
             }
           : rule
       ),
     });
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (id): void => {
     const deleteResult = deleteRule(queryObject, id);
 
     setQueryObject({
       ...queryObject,
-      rules: deleteResult.filteredRules,
+      rules: deleteResult,
     });
   };
 

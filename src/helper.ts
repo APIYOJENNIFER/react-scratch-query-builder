@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
-import { QueryObject } from './types';
+import { QueryObject, Rule } from './types';
 
-const updateRulesList = (queryObject: QueryObject) => {
+const updateRulesList = (queryObject: QueryObject): Rule[] => {
   const ruleObject = {
     id: nanoid(),
     field: 'First Name',
@@ -15,23 +15,19 @@ const updateRulesList = (queryObject: QueryObject) => {
 
   const updatedRules = queryObject.rules;
 
-  return {
-    updatedRules,
-  };
+  return updatedRules;
 };
 
-const deleteRule = (queryObject: QueryObject, id: string) => {
+const deleteRule = (queryObject: QueryObject, id: string): Rule[] => {
   const newQueryObject = queryObject;
   const filteredRules = newQueryObject.rules.filter((rule) => rule.id !== id);
 
   newQueryObject.rules = filteredRules;
 
-  return {
-    filteredRules,
-  };
+  return filteredRules;
 };
 
-const changeInputPlaceHolder = (field: string) => {
+const changeInputPlaceHolder = (field: string): string => {
   let placeHolder = '';
   if (field === 'First Name') {
     placeHolder = 'E.g John';
@@ -52,31 +48,31 @@ const changeInputPlaceHolder = (field: string) => {
   return placeHolder;
 };
 
-const checkIfInputIsValid = (inputString: string, reg: RegExp) => {
+const checkIfInputIsValid = (inputString: string, reg: RegExp): boolean => {
   const isValid = inputString.length === 0 || reg.test(inputString.trim());
 
   return isValid;
 };
 
-const validateName = (inputString) => {
+const validateName = (inputString): boolean => {
   const reg = /^[\p{L} ]+$/u;
 
   return checkIfInputIsValid(inputString, reg);
 };
 
-const validateAge = (inputString) => {
+const validateAge = (inputString): boolean => {
   const reg = /^(?:[0-9]|[1-9][0-9]|1[0-2][0-9]|130)$/;
 
   return checkIfInputIsValid(inputString, reg);
 };
 
-const validateLevel = (inputString) => {
+const validateLevel = (inputString): boolean => {
   const reg = /^[0-9]{1,6}$/;
 
   return checkIfInputIsValid(inputString, reg);
 };
 
-const validateEnrollmentYear = (inputString) => {
+const validateEnrollmentYear = (inputString): boolean => {
   const reg = /^(?!0)[0-9]{4}$/;
 
   return checkIfInputIsValid(inputString, reg);
@@ -86,7 +82,7 @@ const validateInput = (
   queryObject: QueryObject,
   value: string,
   idx: string
-) => {
+): [boolean, string] => {
   let isValid = true;
   let errorMessage = '';
 
@@ -119,7 +115,7 @@ const validateInput = (
     }
   });
 
-  return { isValid, errorMessage };
+  return [isValid, errorMessage];
 };
 
 export { updateRulesList, deleteRule, changeInputPlaceHolder, validateInput };
