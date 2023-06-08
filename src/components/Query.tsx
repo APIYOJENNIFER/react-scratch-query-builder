@@ -56,7 +56,7 @@ const Query: React.FunctionComponent = () => {
   };
 
   const handleValueChange = (value, idx): void => {
-    const [isValid, errorMessage] = validateInput(queryObject, value, idx);
+    const { isValid, errorMessage } = validateInput(queryObject, value, idx);
     setQueryObject({
       ...queryObject,
       rules: queryObject.rules.map((rule) =>

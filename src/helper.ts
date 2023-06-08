@@ -82,7 +82,7 @@ const validateInput = (
   queryObject: QueryObject,
   value: string,
   idx: string
-): [boolean, string] => {
+): { isValid: boolean; errorMessage: string } => {
   let isValid = true;
   let errorMessage = '';
 
@@ -115,7 +115,7 @@ const validateInput = (
     }
   });
 
-  return [isValid, errorMessage];
+  return { isValid, errorMessage };
 };
 
 export { updateRulesList, deleteRule, changeInputPlaceHolder, validateInput };
