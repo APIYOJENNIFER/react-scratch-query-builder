@@ -1,19 +1,5 @@
 import { nanoid } from 'nanoid';
-
-export interface Rules {
-  id: string;
-  field: string;
-  operator: string;
-  value: string;
-  placeHolder: string;
-  isValid: boolean;
-  errorMessage: string;
-}
-export interface QueryObject {
-  id: string;
-  combinator: string;
-  rules: Rules[];
-}
+import { QueryObject } from './types';
 
 export const updateRulesList = (queryObject: QueryObject) => {
   const ruleObject = {

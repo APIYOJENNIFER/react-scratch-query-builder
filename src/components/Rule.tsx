@@ -1,14 +1,7 @@
 import React from 'react';
 import RuleItem from './RuleItem';
-import { Rules } from '../helper';
+import { RuleProps } from '../types';
 
-interface RuleProps {
-  rules: Rules[];
-  onFieldChange: (event: string, id: string) => void;
-  onOperatorChange: (event: string, id: string) => void;
-  onValueChange: (event: string, id: string) => void;
-  onDelete: (id: string) => void;
-}
 const Rule: React.FunctionComponent<RuleProps> = ({ ...props }) => (
   <>
     {props.rules.map((item) => (

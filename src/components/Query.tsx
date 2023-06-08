@@ -4,12 +4,12 @@ import Logical from './Logical';
 import GeneralButton from './GeneralButton';
 import {
   updateRulesList,
-  QueryObject,
   changeInputPlaceHolder,
   validateInput,
   deleteRule,
 } from '../helper';
 import Rule from './Rule';
+import { QueryObject } from '../types';
 
 const Query: React.FunctionComponent = () => {
   const [queryObject, setQueryObject] = useState<QueryObject>({
