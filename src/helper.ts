@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { QueryObject } from './types';
 
-export const updateRulesList = (queryObject: QueryObject) => {
+const updateRulesList = (queryObject: QueryObject) => {
   const ruleObject = {
     id: nanoid(),
     field: 'First Name',
@@ -20,7 +20,7 @@ export const updateRulesList = (queryObject: QueryObject) => {
   };
 };
 
-export const deleteRule = (queryObject: QueryObject, id: string) => {
+const deleteRule = (queryObject: QueryObject, id: string) => {
   const newQueryObject = queryObject;
   const filteredRules = newQueryObject.rules.filter((rule) => rule.id !== id);
 
@@ -31,7 +31,7 @@ export const deleteRule = (queryObject: QueryObject, id: string) => {
   };
 };
 
-export const changeInputPlaceHolder = (field: string) => {
+const changeInputPlaceHolder = (field: string) => {
   let placeHolder = '';
   if (field === 'First Name') {
     placeHolder = 'E.g John';
@@ -82,7 +82,7 @@ const validateEnrollmentYear = (inputString) => {
   return checkIfInputIsValid(inputString, reg);
 };
 
-export const validateInput = (
+const validateInput = (
   queryObject: QueryObject,
   value: string,
   idx: string
@@ -121,3 +121,5 @@ export const validateInput = (
 
   return { isValid, errorMessage };
 };
+
+export { updateRulesList, deleteRule, changeInputPlaceHolder, validateInput };

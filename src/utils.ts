@@ -1,9 +1,11 @@
-export const logicalOperators = ['AND', 'OR'];
-export const studentsField = [
+const logicalOperators = ['AND', 'OR'];
+const studentsField = [
   'First Name',
   'Last Name',
   'Age',
   'Level',
   'Enrollment Year',
 ];
-export const comparisonOperators = ['=', '!=', '<', '>'];
+const comparisonOperators = ['=', '!=', '<', '>'];
+
+export { logicalOperators, studentsField, comparisonOperators };
