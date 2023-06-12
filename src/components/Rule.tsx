@@ -19,6 +19,7 @@ const Rule: React.FunctionComponent<RuleProps> = ({ ...props }) => (
         id={item.id}
         residentId={item.residentId}
         nonResidentId={item.nonResidentId}
+        operator={item.operator}
       />
     ))}
   </>

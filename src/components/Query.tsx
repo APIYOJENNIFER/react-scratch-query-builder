@@ -41,6 +41,7 @@ const Query: React.FunctionComponent = () => {
               errorMessage: '',
               value: field === 'Housing' ? 'Resident' : '',
               placeHolder,
+              operator: '=',
             }
           : rule
       ),

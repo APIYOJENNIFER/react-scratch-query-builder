@@ -18,11 +18,16 @@ interface RuleItemProps {
   id;
   residentId;
   nonResidentId;
+  operator: string;
 }
 const RuleItem: React.FunctionComponent<RuleItemProps> = ({ ...props }) => (
   <div className="rule-item">
     <Field onFieldChange={props.onFieldChange} />
-    <Operator onOperatorChange={props.onOperatorChange} />
+    <Operator
+      onOperatorChange={props.onOperatorChange}
+      field={props.field}
+      operator={props.operator}
+    />
     <div className="div-input-error">
       <div>
         <Value
