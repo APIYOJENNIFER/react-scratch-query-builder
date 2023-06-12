@@ -1,5 +1,6 @@
 import React from 'react';
-import { QueryObject, filterObject } from '../helper';
+import { filterObject } from '../helper';
+import { QueryObject } from '../types';
 
 interface QueryProps {
   queryObject: QueryObject;
