@@ -5,7 +5,7 @@ import { QueryObject } from '../types';
 interface QueryProps {
   queryObject: QueryObject;
 }
-const QueryOutput = ({ ...props }: QueryProps) => {
+const QueryOutput: React.FunctionComponent<QueryProps> = ({ ...props }) => {
   const object = filterObject(props.queryObject);
 
   return (
