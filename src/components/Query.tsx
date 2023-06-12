@@ -39,7 +39,7 @@ const Query: React.FunctionComponent = () => {
               field,
               isValid: true,
               errorMessage: '',
-              value: '',
+              value: field === 'Housing' ? 'Resident' : '',
               placeHolder,
             }
           : rule
