@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { OutputObject, QueryObject, Rule } from './types';
+import { QueryObject, Rule } from './types';
 
 const updateRulesList = (queryObject: QueryObject): Rule[] => {
   const ruleObject = {
@@ -118,7 +118,7 @@ const validateInput = (
   return { isValid, errorMessage };
 };
 
-const filterObject = (queryObject: QueryObject): OutputObject => {
+const filterObject = (queryObject: QueryObject): QueryObject => {
   const filteredObject = {
     ...queryObject,
     rules: queryObject.rules.map((item) => {
@@ -128,7 +128,7 @@ const filterObject = (queryObject: QueryObject): OutputObject => {
     }),
   };
 
-  return filteredObject;
+  return filteredObject as QueryObject;
 };
 
 export {

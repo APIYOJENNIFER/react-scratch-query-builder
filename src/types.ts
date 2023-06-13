@@ -22,10 +22,4 @@ interface RuleProps {
   onDelete: (id: string) => void;
 }
 
-interface OutputObject {
-  id: string;
-  combinator: string;
-  rules: { id: string; field: string; operator: string; value: string }[];
-}
-
-export { Rule, QueryObject, RuleProps, OutputObject };
+export { Rule, QueryObject, RuleProps };
