@@ -30,6 +30,18 @@ const Query: React.FunctionComponent = () => {
 
   const handleFieldChange = (field: string, idx: string): void => {
     const placeHolder = changeInputPlaceHolder(field);
+
+    const setValue = (): string => {
+      if (field === 'Housing') {
+        return 'Resident';
+      }
+      if (field === 'Level') {
+        return 'Grade I';
+      }
+
+      return '';
+    };
+
     setQueryObject({
       ...queryObject,
       rules: queryObject.rules.map((rule) =>
@@ -39,7 +51,7 @@ const Query: React.FunctionComponent = () => {
               field,
               isValid: true,
               errorMessage: '',
-              value: field === 'Housing' ? 'Resident' : '',
+              value: setValue(),
               placeHolder,
               operator: '=',
             }

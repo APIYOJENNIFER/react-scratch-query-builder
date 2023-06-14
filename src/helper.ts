@@ -56,9 +56,6 @@ const changeInputPlaceHolder = (field: string): string => {
   if (field === 'Age') {
     placeHolder = 'E.g 10';
   }
-  if (field === 'Level') {
-    placeHolder = 'E.g 1289';
-  }
   if (field === 'Enrollment Year') {
     placeHolder = 'E.g 2021';
   }
@@ -84,13 +81,7 @@ const validateAge = (inputString: string): boolean => {
   return checkIfInputIsValid(inputString, reg);
 };
 
-const validateLevel = (inputString: string): boolean => {
-  const reg = /^[0-9]{1,6}$/;
-
-  return checkIfInputIsValid(inputString, reg);
-};
-
-const validateEnrollmentYear = (inputString: string): boolean => {
+const validateEnrollmentYear = (inputString) => {
   const reg = /^(?!0)[0-9]{4}$/;
 
   return checkIfInputIsValid(inputString, reg);
@@ -118,12 +109,6 @@ const validateInput = (
       if (currentRule.field === 'Age') {
         isValid = validateAge(value);
         errorMessage = 'Please enter a valid age using digits only';
-      }
-
-      if (currentRule.field === 'Level') {
-        isValid = validateLevel(value);
-        errorMessage =
-          'Level should contain digits only, not exceeding six digits';
       }
 
       if (currentRule.field === 'Enrollment Year') {
