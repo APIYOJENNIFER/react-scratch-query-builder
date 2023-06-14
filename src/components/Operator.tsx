@@ -8,7 +8,7 @@ interface OperatorProps {
 }
 const Operator: React.FunctionComponent<OperatorProps> = ({ ...props }) => {
   const operatorList = comparisonOperators.map((item) =>
-    props.field === 'Housing' ? (
+    props.field === 'Housing' || props.field === 'Has Graduated' ? (
       item === '=' && <option key={item}>{item}</option>
     ) : (
       <option key={item}>{item}</option>

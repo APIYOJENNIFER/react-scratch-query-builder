@@ -6,6 +6,7 @@ const studentsField = [
   'Level',
   'Enrollment Year',
   'Housing',
+  'Has Graduated',
 ];
 export const comparisonOperators = ['=', '!=', '<', '>'];
 export const levelGrades = ['Grade I', 'Grade II', 'Grade III', 'Grade IV'];

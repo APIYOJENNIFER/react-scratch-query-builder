@@ -31,12 +31,15 @@ const Query: React.FunctionComponent = () => {
   const handleFieldChange = (field: string, idx: string): void => {
     const placeHolder = changeInputPlaceHolder(field);
 
-    const setValue = (): string => {
+    const setValue = (): string | boolean => {
       if (field === 'Housing') {
         return 'Resident';
       }
       if (field === 'Level') {
         return 'Grade I';
+      }
+      if (field === 'Has Graduated') {
+        return false;
       }
 
       return '';
