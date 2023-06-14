@@ -118,4 +118,23 @@ const validateInput = (
   return { isValid, errorMessage };
 };
 
-export { updateRulesList, deleteRule, changeInputPlaceHolder, validateInput };
+const filterObject = (queryObject: QueryObject): QueryObject => {
+  const filteredObject = {
+    ...queryObject,
+    rules: queryObject.rules.map((item) => {
+      const { isValid, errorMessage, placeHolder, ...newRuleObject } = item;
+
+      return newRuleObject;
+    }),
+  };
+
+  return filteredObject as QueryObject;
+};
+
+export {
+  updateRulesList,
+  deleteRule,
+  changeInputPlaceHolder,
+  validateInput,
+  filterObject,
+};

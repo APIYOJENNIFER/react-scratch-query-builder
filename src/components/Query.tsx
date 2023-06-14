@@ -10,6 +10,7 @@ import {
 } from '../helper';
 import Rule from './Rule';
 import { QueryObject } from '../types';
+import QueryOutput from './QueryOutput';
 
 const Query: React.FunctionComponent = () => {
   const [queryObject, setQueryObject] = useState<QueryObject>({
@@ -104,6 +105,7 @@ const Query: React.FunctionComponent = () => {
           onDelete={handleDelete}
         />
       </div>
+      <QueryOutput queryObject={queryObject} />
     </div>
   );
 };

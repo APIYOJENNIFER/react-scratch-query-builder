@@ -48,3 +48,21 @@ hr {
   background-color: rgb(49, 148, 49);
   font-family: 'Times New Roman', Times, serif;
 }
+
+.json {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 1px;
+  background-color: azure;
+  padding: 10px;
+  border-radius: 2px;
+  color: #0c4160;
+}
+
+.query-output {
+  background-color: white;
+  padding: 10px;
+  margin: 0px 10px 10px 10px;
+  border-radius: 2px;
+  font-size: 16px;
+}
