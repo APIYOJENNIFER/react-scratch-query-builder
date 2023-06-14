@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 interface RadioInputProps {
   onValueChange(event: string): void;
-  id;
-  residentId;
-  nonResidentId;
+  id: string;
+  residentId: string;
+  nonResidentId: string;
 }
 const RadioInput = ({ ...props }: RadioInputProps) => {
   const [selected, setSelected] = useState('Resident');

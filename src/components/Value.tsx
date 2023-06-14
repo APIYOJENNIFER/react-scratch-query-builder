@@ -6,11 +6,11 @@ import CheckboxInput from './CheckboxInput';
 interface ValueProps {
   onValueChange: (event: string) => void;
   placeHolder: string;
-  value: string;
-  field;
-  id;
-  residentId;
-  nonResidentId;
+  value: string | boolean;
+  field: string;
+  id: string;
+  residentId: string;
+  nonResidentId: string;
 }
 const Value: React.FunctionComponent<ValueProps> = ({ ...props }) => {
   const input = () => {
@@ -35,7 +35,7 @@ const Value: React.FunctionComponent<ValueProps> = ({ ...props }) => {
     return (
       <input
         className="input-value"
-        value={props.value}
+        value={props.value as string}
         placeholder={props.placeHolder}
         onChange={(event) => props.onValueChange(event.target.value)}
       />

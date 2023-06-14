@@ -11,13 +11,13 @@ interface RuleItemProps {
   onValueChange: (event: string) => void;
   onDelete: () => void;
   placeHolder: string;
-  value: string;
+  value: string | boolean;
   isValid: boolean;
   errorMessage: string;
-  field;
-  id;
-  residentId;
-  nonResidentId;
+  field: string;
+  id: string;
+  residentId: string;
+  nonResidentId: string;
   operator: string;
 }
 const RuleItem: React.FunctionComponent<RuleItemProps> = ({ ...props }) => (

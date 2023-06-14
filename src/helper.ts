@@ -1,23 +1,7 @@
 import { nanoid } from 'nanoid';
 import { QueryObject, Rule } from './types';
 
-export interface QueryObject {
-  id: string;
-  combinator: string;
-  rules: {
-    id: string;
-    field: string;
-    operator: string;
-    value: string | boolean;
-    placeHolder: string;
-    isValid: boolean;
-    errorMessage: string;
-    residentId: string;
-    nonResidentId: string;
-  }[];
-}
-
-export const updateRulesList = (queryObject: QueryObject) => {
+const updateRulesList = (queryObject: QueryObject): Rule[] => {
   const ruleObject = {
     id: nanoid(),
     field: 'First Name',
@@ -81,7 +65,7 @@ const validateAge = (inputString: string): boolean => {
   return checkIfInputIsValid(inputString, reg);
 };
 
-const validateEnrollmentYear = (inputString) => {
+const validateEnrollmentYear = (inputString): boolean => {
   const reg = /^(?!0)[0-9]{4}$/;
 
   return checkIfInputIsValid(inputString, reg);

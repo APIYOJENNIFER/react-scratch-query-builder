@@ -8,7 +8,7 @@ const studentsField = [
   'Housing',
   'Has Graduated',
 ];
-export const comparisonOperators = ['=', '!=', '<', '>'];
-export const levelGrades = ['Grade I', 'Grade II', 'Grade III', 'Grade IV'];
+const comparisonOperators = ['=', '!=', '<', '>'];
+const levelGrades = ['Grade I', 'Grade II', 'Grade III', 'Grade IV'];
 
-export { logicalOperators, studentsField, comparisonOperators };
+export { logicalOperators, studentsField, comparisonOperators, levelGrades };
