@@ -19,7 +19,7 @@ const Query: React.FunctionComponent = () => {
     rules: [],
   });
 
-  const handleLogicalChange = (logical): void => {
+  const handleLogicalChange = (logical: string): void => {
     setQueryObject({ ...queryObject, combinator: logical });
   };
 
@@ -28,7 +28,7 @@ const Query: React.FunctionComponent = () => {
     setQueryObject({ ...queryObject, rules: updatedRulesList });
   };
 
-  const handleFieldChange = (field, idx): void => {
+  const handleFieldChange = (field: string, idx: string): void => {
     const placeHolder = changeInputPlaceHolder(field);
     setQueryObject({
       ...queryObject,
@@ -47,7 +47,7 @@ const Query: React.FunctionComponent = () => {
     });
   };
 
-  const handleOperatorChange = (operator, idx): void => {
+  const handleOperatorChange = (operator: string, idx: string): void => {
     setQueryObject({
       ...queryObject,
       rules: queryObject.rules.map((rule) =>
@@ -56,7 +56,7 @@ const Query: React.FunctionComponent = () => {
     });
   };
 
-  const handleValueChange = (value, idx): void => {
+  const handleValueChange = (value: string, idx: string): void => {
     const { isValid, errorMessage } = validateInput(queryObject, value, idx);
     setQueryObject({
       ...queryObject,
@@ -73,7 +73,7 @@ const Query: React.FunctionComponent = () => {
     });
   };
 
-  const handleDelete = (id): void => {
+  const handleDelete = (id: string): void => {
     const deleteResult = deleteRule(queryObject, id);
 
     setQueryObject({
