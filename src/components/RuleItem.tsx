@@ -2,7 +2,7 @@ import React from 'react';
 import Operator from './Operator';
 import GeneralButton from './GeneralButton';
 import Field from './Field';
-import Value from './Value';
+import ValueInput from './ValueInput';
 import Error from './Error';
 
 interface RuleItemProps {
@@ -30,7 +30,7 @@ const RuleItem: React.FunctionComponent<RuleItemProps> = ({ ...props }) => (
     />
     <div className="div-input-error">
       <div>
-        <Value
+        <ValueInput
           placeHolder={props.placeHolder}
           onValueChange={props.onValueChange}
           value={props.value}

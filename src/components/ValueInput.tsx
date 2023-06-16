@@ -3,7 +3,7 @@ import RadioInput from './RadioInput';
 import SelectInput from './SelectInput';
 import CheckboxInput from './CheckboxInput';
 
-interface ValueProps {
+interface ValueInputProps {
   onValueChange: (event: string) => void;
   placeHolder: string;
   value: string | boolean;
@@ -12,7 +12,7 @@ interface ValueProps {
   residentId: string;
   nonResidentId: string;
 }
-const Value: React.FunctionComponent<ValueProps> = ({ ...props }) => {
+const ValueInput: React.FunctionComponent<ValueInputProps> = ({ ...props }) => {
   const input = () => {
     if (props.field === 'Housing') {
       return (
@@ -45,4 +45,4 @@ const Value: React.FunctionComponent<ValueProps> = ({ ...props }) => {
   return <>{input()}</>;
 };
 
-export default Value;
+export default ValueInput;
