@@ -125,10 +125,25 @@ const filterObject = (queryObject: QueryObject): QueryObject => {
   return filteredObject as QueryObject;
 };
 
+const setDefaultValue = (field: string): string | boolean => {
+  if (field === 'Housing') {
+    return 'Resident';
+  }
+  if (field === 'Level') {
+    return 'Grade I';
+  }
+  if (field === 'Has Graduated') {
+    return false;
+  }
+
+  return '';
+};
+
 export {
   updateRulesList,
   deleteRule,
   changeInputPlaceHolder,
   validateInput,
   filterObject,
+  setDefaultValue,
 };
