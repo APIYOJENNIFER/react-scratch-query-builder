@@ -54,25 +54,25 @@ const checkIfInputIsValid = (inputString: string, reg: RegExp): boolean => {
   return isValid;
 };
 
-const validateName = (inputString): boolean => {
+const validateName = (inputString: string): boolean => {
   const reg = /^[\p{L} ]+$/u;
 
   return checkIfInputIsValid(inputString, reg);
 };
 
-const validateAge = (inputString): boolean => {
+const validateAge = (inputString: string): boolean => {
   const reg = /^(?:[0-9]|[1-9][0-9]|1[0-2][0-9]|130)$/;
 
   return checkIfInputIsValid(inputString, reg);
 };
 
-const validateLevel = (inputString): boolean => {
+const validateLevel = (inputString: string): boolean => {
   const reg = /^[0-9]{1,6}$/;
 
   return checkIfInputIsValid(inputString, reg);
 };
 
-const validateEnrollmentYear = (inputString): boolean => {
+const validateEnrollmentYear = (inputString: string): boolean => {
   const reg = /^(?!0)[0-9]{4}$/;
 
   return checkIfInputIsValid(inputString, reg);
