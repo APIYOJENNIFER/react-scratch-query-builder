@@ -9,7 +9,7 @@ interface RadioInputProps {
 const RadioInput = ({ ...props }: RadioInputProps) => {
   const [selected, setSelected] = useState('Resident');
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     props.onValueChange(event.target.value);
     setSelected(event.target.value);
   };

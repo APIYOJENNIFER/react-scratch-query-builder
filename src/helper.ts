@@ -65,7 +65,7 @@ const validateAge = (inputString: string): boolean => {
   return checkIfInputIsValid(inputString, reg);
 };
 
-const validateEnrollmentYear = (inputString): boolean => {
+const validateEnrollmentYear = (inputString: string): boolean => {
   const reg = /^(?!0)[0-9]{4}$/;
 
   return checkIfInputIsValid(inputString, reg);
