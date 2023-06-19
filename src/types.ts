@@ -2,10 +2,12 @@ interface Rule {
   id: string;
   field: string;
   operator: string;
-  value: string;
+  value: string | boolean;
   placeHolder: string;
   isValid: boolean;
   errorMessage: string;
+  residentId: string;
+  nonResidentId: string;
 }
 
 interface QueryObject {

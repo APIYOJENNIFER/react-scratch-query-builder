@@ -7,6 +7,7 @@ import {
   changeInputPlaceHolder,
   validateInput,
   deleteRule,
+  setDefaultValue,
 } from '../helper';
 import Rule from './Rule';
 import { QueryObject } from '../types';
@@ -30,6 +31,8 @@ const Query: React.FunctionComponent = () => {
 
   const handleFieldChange = (field: string, idx: string): void => {
     const placeHolder = changeInputPlaceHolder(field);
+    const value = setDefaultValue(field);
+
     setQueryObject({
       ...queryObject,
       rules: queryObject.rules.map((rule) =>
@@ -39,8 +42,9 @@ const Query: React.FunctionComponent = () => {
               field,
               isValid: true,
               errorMessage: '',
-              value: '',
+              value,
               placeHolder,
+              operator: '=',
             }
           : rule
       ),

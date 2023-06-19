@@ -10,6 +10,8 @@ const updateRulesList = (queryObject: QueryObject): Rule[] => {
     placeHolder: 'E.g John',
     isValid: true,
     errorMessage: '',
+    residentId: nanoid(),
+    nonResidentId: nanoid(),
   };
   queryObject.rules.push(ruleObject);
 
@@ -38,9 +40,6 @@ const changeInputPlaceHolder = (field: string): string => {
   if (field === 'Age') {
     placeHolder = 'E.g 10';
   }
-  if (field === 'Level') {
-    placeHolder = 'E.g 1289';
-  }
   if (field === 'Enrollment Year') {
     placeHolder = 'E.g 2021';
   }
@@ -62,12 +61,6 @@ const validateName = (inputString: string): boolean => {
 
 const validateAge = (inputString: string): boolean => {
   const reg = /^(?:[0-9]|[1-9][0-9]|1[0-2][0-9]|130)$/;
-
-  return checkIfInputIsValid(inputString, reg);
-};
-
-const validateLevel = (inputString: string): boolean => {
-  const reg = /^[0-9]{1,6}$/;
 
   return checkIfInputIsValid(inputString, reg);
 };
@@ -102,12 +95,6 @@ const validateInput = (
         errorMessage = 'Please enter a valid age using digits only';
       }
 
-      if (currentRule.field === 'Level') {
-        isValid = validateLevel(value);
-        errorMessage =
-          'Level should contain digits only, not exceeding six digits';
-      }
-
       if (currentRule.field === 'Enrollment Year') {
         isValid = validateEnrollmentYear(value);
         errorMessage = 'Please enter a valid year using digits only';
@@ -122,7 +109,14 @@ const filterObject = (queryObject: QueryObject): QueryObject => {
   const filteredObject = {
     ...queryObject,
     rules: queryObject.rules.map((item) => {
-      const { isValid, errorMessage, placeHolder, ...newRuleObject } = item;
+      const {
+        isValid,
+        errorMessage,
+        placeHolder,
+        residentId,
+        nonResidentId,
+        ...newRuleObject
+      } = item;
 
       return newRuleObject;
     }),
@@ -131,10 +125,25 @@ const filterObject = (queryObject: QueryObject): QueryObject => {
   return filteredObject as QueryObject;
 };
 
+const setDefaultValue = (field: string): string | boolean => {
+  if (field === 'Housing') {
+    return 'Resident';
+  }
+  if (field === 'Level') {
+    return 'Grade I';
+  }
+  if (field === 'Has Graduated') {
+    return false;
+  }
+
+  return '';
+};
+
 export {
   updateRulesList,
   deleteRule,
   changeInputPlaceHolder,
   validateInput,
   filterObject,
+  setDefaultValue,
 };
