@@ -29,7 +29,12 @@ const ValueInput: React.FunctionComponent<ValueInputProps> = ({ ...props }) => {
     }
 
     if (props.field === 'Has Graduated') {
-      return <CheckboxInput onValueChange={props.onValueChange} />;
+      return (
+        <CheckboxInput
+          onValueChange={props.onValueChange}
+          value={props.value}
+        />
+      );
     }
 
     return (
