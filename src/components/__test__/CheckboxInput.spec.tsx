@@ -1,6 +1,5 @@
 import React = require('react');
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, fireEvent } from '@testing-library/react';
 import CheckboxInput from '../CheckboxInput';
 
 describe('CheckboxInput', () => {
@@ -25,7 +24,8 @@ describe('CheckboxInput', () => {
     const value = true;
 
     render(<CheckboxInput onValueChange={handleValueChange} value={value} />);
-    userEvent.click(screen.getByRole('checkbox'));
+    fireEvent.click(screen.getByRole('checkbox'));
+    expect(handleValueChange).toHaveBeenCalled();
     expect(screen.getByRole('checkbox')).toBeChecked();
   });
 
@@ -34,7 +34,8 @@ describe('CheckboxInput', () => {
     const value = false;
 
     render(<CheckboxInput onValueChange={handleValueChange} value={value} />);
-    userEvent.click(screen.getByRole('checkbox'));
+    fireEvent.click(screen.getByRole('checkbox'));
+    expect(handleValueChange).toHaveBeenCalled();
     expect(screen.getByRole('checkbox')).not.toBeChecked();
   });
 });
