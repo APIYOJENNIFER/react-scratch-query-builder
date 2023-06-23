@@ -8,7 +8,7 @@ describe('CheckboxInput', () => {
     const value = false;
 
     render(<CheckboxInput onValueChange={handleValueChange} value={value} />);
-    expect(screen.getByRole('checkbox')).toBeInTheDocument();
+    expect(screen.getByTestId('checkbox-input')).toBeInTheDocument();
   });
 
   it('is unchecked by default', () => {
@@ -16,7 +16,7 @@ describe('CheckboxInput', () => {
     const value = false;
 
     render(<CheckboxInput onValueChange={handleValueChange} value={value} />);
-    expect(screen.getByRole('checkbox')).not.toBeChecked();
+    expect(screen.getByTestId('checkbox-input')).not.toBeChecked();
   });
 
   it('can be checked', () => {
@@ -24,9 +24,9 @@ describe('CheckboxInput', () => {
     const value = true;
 
     render(<CheckboxInput onValueChange={handleValueChange} value={value} />);
-    fireEvent.click(screen.getByRole('checkbox'));
+    fireEvent.click(screen.getByTestId('checkbox-input'));
     expect(handleValueChange).toHaveBeenCalled();
-    expect(screen.getByRole('checkbox')).toBeChecked();
+    expect(screen.getByTestId('checkbox-input')).toBeChecked();
   });
 
   it('can be unchecked', () => {
@@ -34,8 +34,8 @@ describe('CheckboxInput', () => {
     const value = false;
 
     render(<CheckboxInput onValueChange={handleValueChange} value={value} />);
-    fireEvent.click(screen.getByRole('checkbox'));
+    fireEvent.click(screen.getByTestId('checkbox-input'));
     expect(handleValueChange).toHaveBeenCalled();
-    expect(screen.getByRole('checkbox')).not.toBeChecked();
+    expect(screen.getByTestId('checkbox-input')).not.toBeChecked();
   });
 });

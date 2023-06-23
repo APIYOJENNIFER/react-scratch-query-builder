@@ -8,6 +8,7 @@ const CheckboxInput: React.FunctionComponent<CheckboxInputProps> = ({
   ...props
 }) => (
   <input
+    data-testid="checkbox-input"
     type="checkbox"
     checked={props.value as boolean}
     onChange={(event) => props.onValueChange(event.target.checked)}

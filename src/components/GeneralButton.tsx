@@ -7,7 +7,12 @@ interface ButtonProps {
 }
 
 const GeneralButton: React.FunctionComponent<ButtonProps> = ({ ...props }) => (
-  <button className={props.className} type="button" onClick={props.onClick}>
+  <button
+    data-testid="general-button"
+    className={props.className}
+    type="button"
+    onClick={props.onClick}
+  >
     {props.buttonText}
   </button>
 );
