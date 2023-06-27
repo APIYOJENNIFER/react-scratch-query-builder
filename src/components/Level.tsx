@@ -4,13 +4,12 @@ import { levelGrades } from '../utils';
 interface SelectInputProps {
   onValueChange(event: string): void;
 }
-const SelectInput: React.FunctionComponent<SelectInputProps> = ({
-  ...props
-}) => {
+const Level: React.FunctionComponent<SelectInputProps> = ({ ...props }) => {
   const options = levelGrades.map((item) => <option key={item}>{item}</option>);
 
   return (
     <select
+      data-testid="level-select"
       className="select-level"
       onChange={(event) => props.onValueChange(event.target.value)}
     >
@@ -18,4 +17,4 @@ const SelectInput: React.FunctionComponent<SelectInputProps> = ({
     </select>
   );
 };
-export default SelectInput;
+export default Level;
