@@ -7,7 +7,9 @@ interface ErrorProps {
 const Error: React.FunctionComponent<ErrorProps> = ({ ...props }) => (
   <>
     {!props.isValid && (
-      <small className="error-output">{props.errorMessage}</small>
+      <small data-testid="error-message" className="error-output">
+        {props.errorMessage}
+      </small>
     )}
   </>
 );
