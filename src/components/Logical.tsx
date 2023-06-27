@@ -7,11 +7,14 @@ interface LogicalProps {
 
 const Logical: React.FunctionComponent<LogicalProps> = ({ ...props }) => {
   const logicalList = logicalOperators.map((item) => (
-    <option key={item}>{item}</option>
+    <option data-testid={item} key={item}>
+      {item}
+    </option>
   ));
 
   return (
     <select
+      data-testid="logical-select"
       className="logical-select"
       onChange={(event) => props.onLogicalChange(event.target.value)}
     >
