@@ -1,10 +1,10 @@
 import React from 'react';
 import { levelGrades } from '../utils';
 
-interface SelectInputProps {
+interface LevelProps {
   onValueChange(event: string): void;
 }
-const Level: React.FunctionComponent<SelectInputProps> = ({ ...props }) => {
+const Level: React.FunctionComponent<LevelProps> = ({ ...props }) => {
   const options = levelGrades.map((item) => <option key={item}>{item}</option>);
 
   return (

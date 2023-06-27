@@ -1,7 +1,8 @@
 import React from 'react';
 import RadioInput from './RadioInput';
-import SelectInput from './SelectInput';
+import Level from './Level';
 import CheckboxInput from './CheckboxInput';
+import GeneralInput from './GeneralInput';
 
 interface ValueInputProps {
   onValueChange: (event: string) => void;
@@ -25,7 +26,7 @@ const ValueInput: React.FunctionComponent<ValueInputProps> = ({ ...props }) => {
       );
     }
     if (props.field === 'Level') {
-      return <SelectInput onValueChange={props.onValueChange} />;
+      return <Level onValueChange={props.onValueChange} />;
     }
 
     if (props.field === 'Has Graduated') {
@@ -38,11 +39,10 @@ const ValueInput: React.FunctionComponent<ValueInputProps> = ({ ...props }) => {
     }
 
     return (
-      <input
-        className="input-value"
-        value={props.value as string}
-        placeholder={props.placeHolder}
-        onChange={(event) => props.onValueChange(event.target.value)}
+      <GeneralInput
+        onValueChange={props.onValueChange}
+        value={props.value}
+        placeHolder={props.placeHolder}
       />
     );
   };
