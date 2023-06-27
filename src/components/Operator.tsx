@@ -17,6 +17,7 @@ const Operator: React.FunctionComponent<OperatorProps> = ({ ...props }) => {
 
   return (
     <select
+      data-testid="operator-select"
       value={props.operator}
       className="select-comparison-operator"
       onChange={(event) => props.onOperatorChange(event.target.value)}
