@@ -16,8 +16,9 @@ const RadioInput = ({ ...props }: RadioInputProps) => {
 
   return (
     <>
-      <label htmlFor={props.residentId}>
+      <label htmlFor={props.residentId} data-testid="resident-label">
         <input
+          data-testid="resident"
           type="radio"
           name={props.id}
           value="Resident"
@@ -29,6 +30,7 @@ const RadioInput = ({ ...props }: RadioInputProps) => {
       </label>
       <label htmlFor={props.nonResidentId}>
         <input
+          data-testid="non-resident"
           type="radio"
           name={props.id}
           value="Non-Resident"
