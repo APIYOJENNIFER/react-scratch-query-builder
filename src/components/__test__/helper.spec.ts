@@ -2,7 +2,7 @@ import { deleteRule, validateInput } from '../../helper';
 import { QueryObject } from '../../types';
 
 describe('ValidateInput', () => {
-  it('should return false for isValid and the correct errorMessage', () => {
+  it('returns false for wrong input value and the correct errorMessage', () => {
     const queryObject: QueryObject = {
       id: '1',
       combinator: 'AND',
