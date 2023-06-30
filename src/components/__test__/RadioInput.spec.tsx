@@ -13,7 +13,9 @@ describe('RadioInput', () => {
         nonResidentId="non-resident-id"
       />
     );
-    const radioElement = screen.getByTestId('resident');
+    const radioElement = screen.getByTestId('resident') as HTMLInputElement;
+    expect(radioElement).toBeInTheDocument();
+    expect(radioElement.value).toBe('Resident');
     expect(radioElement).toBeChecked();
   });
 
