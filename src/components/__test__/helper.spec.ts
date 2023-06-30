@@ -2,6 +2,7 @@ import {
   changeInputPlaceHolder,
   deleteRule,
   filterObject,
+  setDefaultValue,
   updateRulesList,
   validateInput,
 } from '../../helper';
@@ -118,5 +119,25 @@ describe('FilterObject', () => {
   it('return the specified key value pairs only', () => {
     const filteredObject = filterObject(queryObject);
     expect(filteredObject).toEqual(filteredQueryObject as QueryObject);
+  });
+});
+
+describe('SetDefaultValue', () => {
+  it('returns the right default value for a given field', () => {
+    // Return false if field is Has Graduated
+    const defHasGraduated = setDefaultValue('Has Graduated');
+    expect(defHasGraduated).toEqual(false);
+
+    // Return Resident if field is Housing
+    const defHousing = setDefaultValue('Housing');
+    expect(defHousing).toEqual('Resident');
+
+    // Return Grade I if field is Level
+    const defLevel = setDefaultValue('Level');
+    expect(defLevel).toEqual('Grade I');
+
+    // Return '' if any other field except the ones specified above
+    const defaultValue = setDefaultValue('Age');
+    expect(defaultValue).toEqual('');
   });
 });
