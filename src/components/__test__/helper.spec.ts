@@ -1,6 +1,5 @@
-import { validateInput } from '../../helper';
+import { deleteRule, validateInput } from '../../helper';
 import { QueryObject } from '../../types';
-import {} from '@testing-library/react';
 
 describe('ValidateInput', () => {
   it('should return false for isValid and the correct errorMessage', () => {
@@ -33,5 +32,29 @@ describe('ValidateInput', () => {
       isValid: false,
       errorMessage: 'Please enter a valid age using digits only',
     });
+  });
+});
+
+describe('DeleteRule', () => {
+  it('deletes a rule', () => {
+    const queryObject: QueryObject = {
+      id: '1',
+      combinator: 'AND',
+      rules: [
+        {
+          id: '1',
+          field: 'Level',
+          operator: '=',
+          value: 'Grade I',
+          placeHolder: 'E.g Grade II',
+          isValid: true,
+          errorMessage: '',
+          residentId: '4',
+          nonResidentId: '5',
+        },
+      ],
+    };
+    const rule = deleteRule(queryObject, '1');
+    expect(rule.length).toEqual(0);
   });
 });
