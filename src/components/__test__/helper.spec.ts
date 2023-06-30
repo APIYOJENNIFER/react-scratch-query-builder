@@ -1,4 +1,9 @@
-import { deleteRule, updateRulesList, validateInput } from '../../helper';
+import {
+  changeInputPlaceHolder,
+  deleteRule,
+  updateRulesList,
+  validateInput,
+} from '../../helper';
 import { QueryObject } from '../../types';
 
 describe('ValidateInput', () => {
@@ -68,5 +73,12 @@ describe('UpdateRulesList', () => {
     };
     const updatedRule = updateRulesList(queryObject);
     expect(updatedRule.length).toEqual(1);
+  });
+});
+
+describe('ChangeInputPlaceHolder', () => {
+  it('returns the right placeholder on field toggle', () => {
+    const placeHolder = changeInputPlaceHolder('Last Name');
+    expect(placeHolder).toEqual('E.g Doe');
   });
 });
