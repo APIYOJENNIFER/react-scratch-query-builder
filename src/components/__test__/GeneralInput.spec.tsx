@@ -3,13 +3,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import GeneralInput from '../GeneralInput';
 
 describe('GeneralInput', () => {
-  it('renders correctly', () => {
-    const handleChange = jest.fn();
-    render(
-      <GeneralInput onValueChange={handleChange} value="" placeHolder="" />
-    );
-  });
-
   it('input value changes correctly', () => {
     const handleChange = jest.fn();
     render(
