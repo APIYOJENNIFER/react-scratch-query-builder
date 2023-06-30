@@ -1,4 +1,4 @@
-import { deleteRule, validateInput } from '../../helper';
+import { deleteRule, updateRulesList, validateInput } from '../../helper';
 import { QueryObject } from '../../types';
 
 describe('ValidateInput', () => {
@@ -56,5 +56,17 @@ describe('DeleteRule', () => {
     };
     const rule = deleteRule(queryObject, '1');
     expect(rule.length).toEqual(0);
+  });
+});
+
+describe('UpdateRulesList', () => {
+  it('adds a new rule to the rules list', () => {
+    const queryObject: QueryObject = {
+      id: '1',
+      combinator: 'AND',
+      rules: [],
+    };
+    const updatedRule = updateRulesList(queryObject);
+    expect(updatedRule.length).toEqual(1);
   });
 });
