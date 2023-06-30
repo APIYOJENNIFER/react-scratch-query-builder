@@ -11,6 +11,7 @@ const Field: React.FunctionComponent<FieldProps> = ({ ...props }) => {
 
   return (
     <select
+      data-testid="field-select"
       className="select-student-info"
       onChange={(event) => props.onFieldChange(event.target.value)}
     >
