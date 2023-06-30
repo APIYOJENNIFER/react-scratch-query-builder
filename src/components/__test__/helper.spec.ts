@@ -1,6 +1,7 @@
 import {
   changeInputPlaceHolder,
   deleteRule,
+  filterObject,
   updateRulesList,
   validateInput,
 } from '../../helper';
@@ -80,5 +81,42 @@ describe('ChangeInputPlaceHolder', () => {
   it('returns the right placeholder on field toggle', () => {
     const placeHolder = changeInputPlaceHolder('Last Name');
     expect(placeHolder).toEqual('E.g Doe');
+  });
+});
+
+describe('FilterObject', () => {
+  const queryObject: QueryObject = {
+    id: '1',
+    combinator: 'AND',
+    rules: [
+      {
+        id: '1',
+        field: 'Level',
+        operator: '=',
+        value: 'Grade I',
+        placeHolder: 'E.g Grade II',
+        isValid: true,
+        errorMessage: '',
+        residentId: '4',
+        nonResidentId: '5',
+      },
+    ],
+  };
+
+  const filteredQueryObject = {
+    id: '1',
+    combinator: 'AND',
+    rules: [
+      {
+        id: '1',
+        field: 'Level',
+        operator: '=',
+        value: 'Grade I',
+      },
+    ],
+  };
+  it('return the specified key value pairs only', () => {
+    const filteredObject = filterObject(queryObject);
+    expect(filteredObject).toEqual(filteredQueryObject as QueryObject);
   });
 });
