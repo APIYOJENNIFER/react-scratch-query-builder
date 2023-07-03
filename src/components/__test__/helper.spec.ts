@@ -27,13 +27,8 @@ describe('ValidateInput', () => {
         },
       ],
     };
-    let value = '';
-    let idx = '';
-    queryObject.rules.forEach((e) => {
-      value = e.value as string;
-      idx = e.id;
-    });
-    const returnedObject = validateInput(queryObject, value, idx);
+
+    const returnedObject = validateInput(queryObject, '12d', '1');
 
     expect(returnedObject).toEqual({
       isValid: false,
