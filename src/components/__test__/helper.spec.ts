@@ -56,8 +56,8 @@ describe('DeleteRule', () => {
         },
       ],
     };
-    const rule = deleteRule(queryObject, '1');
-    expect(rule.length).toEqual(0);
+    deleteRule(queryObject, '1');
+    expect(queryObject.rules.length).toEqual(0);
   });
 });
 
