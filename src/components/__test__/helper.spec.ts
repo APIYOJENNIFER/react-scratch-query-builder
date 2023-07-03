@@ -111,7 +111,7 @@ describe('FilterObject', () => {
       },
     ],
   };
-  it('return the specified key value pairs only', () => {
+  it('return the specified key value pairs only i.e. (id, field, operator, value) and exclude the others i.e. (placeHolder, isValid, errorMessage, residentId, nonResidentId)', () => {
     const filteredObject = filterObject(queryObject);
     expect(filteredObject).toEqual(filteredQueryObject as QueryObject);
   });
