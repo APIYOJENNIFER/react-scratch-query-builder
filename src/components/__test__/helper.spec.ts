@@ -25,14 +25,46 @@ describe('ValidateInput', () => {
           residentId: '2',
           nonResidentId: '3',
         },
+        {
+          id: '2',
+          field: 'Last Name',
+          operator: '=',
+          value: 'Doe2',
+          placeHolder: 'E.g Doe',
+          isValid: true,
+          errorMessage: '',
+          residentId: '4',
+          nonResidentId: '5',
+        },
+        {
+          id: '3',
+          field: 'Enrollment Year',
+          operator: '=',
+          value: '1993e',
+          placeHolder: 'E.g 2023',
+          isValid: true,
+          errorMessage: '',
+          residentId: '6',
+          nonResidentId: '7',
+        },
       ],
     };
 
-    const returnedObject = validateInput(queryObject, '12d', '1');
+    const ageTestObject = validateInput(queryObject, '12d', '1');
+    const nameTestObject = validateInput(queryObject, 'Doe2', '2');
+    const enrollmentYearTestObject = validateInput(queryObject, '1993e', '3');
 
-    expect(returnedObject).toEqual({
+    expect(ageTestObject).toEqual({
       isValid: false,
       errorMessage: 'Please enter a valid age using digits only',
+    });
+    expect(nameTestObject).toEqual({
+      isValid: false,
+      errorMessage: 'Name should contain alphabetical characters only',
+    });
+    expect(enrollmentYearTestObject).toEqual({
+      isValid: false,
+      errorMessage: 'Please enter a valid year using digits only',
     });
   });
 });
