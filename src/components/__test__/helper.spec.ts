@@ -68,8 +68,8 @@ describe('UpdateRulesList', () => {
       combinator: 'AND',
       rules: [],
     };
-    const updatedRule = updateRulesList(queryObject);
-    expect(updatedRule.length).toEqual(1);
+    updateRulesList(queryObject);
+    expect(queryObject.rules.length).toEqual(1);
   });
 });
 
