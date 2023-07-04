@@ -6,7 +6,7 @@ import {
   updateRulesList,
   validateInput,
 } from '../../helper';
-import { QueryObject } from '../../types';
+import { QueryObject, Rule } from '../../types';
 
 describe('ValidateInput', () => {
   it('returns false for wrong input value and the correct errorMessage', () => {
@@ -116,35 +116,28 @@ describe('FilterObject', () => {
   const queryObject: QueryObject = {
     id: '1',
     combinator: 'AND',
-    rules: [
-      {
-        id: '1',
-        field: 'Level',
-        operator: '=',
-        value: 'Grade I',
-        placeHolder: 'E.g Grade II',
-        isValid: true,
-        errorMessage: '',
-        residentId: '4',
-        nonResidentId: '5',
-      },
-    ],
+    rules: [],
   };
+
+  const requiredFields = [
+    {
+      id: '1',
+      field: 'Level',
+      operator: '=',
+      value: 'Grade I',
+    },
+  ];
 
   const filteredQueryObject = {
     id: '1',
     combinator: 'AND',
-    rules: [
-      {
-        id: '1',
-        field: 'Level',
-        operator: '=',
-        value: 'Grade I',
-      },
-    ],
+    rules: requiredFields,
   };
-  it('return the specified key value pairs only i.e. (id, field, operator, value) and exclude the others i.e. (placeHolder, isValid, errorMessage, residentId, nonResidentId)', () => {
-    const filteredObject = filterObject(queryObject);
+
+  it('returns the specified key value pairs only i.e. (id, field, operator, value)', () => {
+    const filteredObject = filterObject(queryObject, [
+      { id: '1', field: 'Level', operator: '=', value: 'Grade I' },
+    ] as Rule[]);
     expect(filteredObject).toEqual(filteredQueryObject as QueryObject);
   });
 });

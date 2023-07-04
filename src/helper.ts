@@ -105,24 +105,16 @@ const validateInput = (
   return { isValid, errorMessage };
 };
 
-const filterObject = (queryObject: QueryObject): QueryObject => {
+const filterObject = (
+  queryObject: QueryObject,
+  requiredFields: Rule[]
+): QueryObject => {
   const filteredObject = {
     ...queryObject,
-    rules: queryObject.rules.map((item) => {
-      const {
-        isValid,
-        errorMessage,
-        placeHolder,
-        residentId,
-        nonResidentId,
-        ...newRuleObject
-      } = item;
-
-      return newRuleObject;
-    }),
+    rules: requiredFields,
   };
 
-  return filteredObject as QueryObject;
+  return filteredObject;
 };
 
 const setDefaultValue = (field: string): string | boolean => {
