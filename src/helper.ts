@@ -105,16 +105,28 @@ const validateInput = (
   return { isValid, errorMessage };
 };
 
-const filterObject = (
+const filterRule = (
   queryObject: QueryObject,
-  requiredFields: Rule[]
+  requiredKeys: string[]
 ): QueryObject => {
-  const filteredObject = {
+  const filteredRules = queryObject.rules.map((rule) => {
+    const rulesObject: Record<string, string | boolean> = {};
+
+    requiredKeys.forEach((key) => {
+      if (key in rule) {
+        rulesObject[key as string] = rule[key as keyof Rule];
+      }
+    });
+
+    return rulesObject;
+  });
+
+  const returnedQueryObject = {
     ...queryObject,
-    rules: requiredFields,
+    rules: filteredRules,
   };
 
-  return filteredObject;
+  return returnedQueryObject as unknown as QueryObject;
 };
 
 const setDefaultValue = (field: string): string | boolean => {
@@ -136,6 +148,6 @@ export {
   deleteRule,
   changeInputPlaceHolder,
   validateInput,
-  filterObject,
+  filterRule,
   setDefaultValue,
 };
