@@ -1,7 +1,7 @@
 import {
   changeInputPlaceHolder,
   deleteRule,
-  filterObject,
+  filterRule,
   setDefaultValue,
   updateRulesList,
   validateInput,
@@ -116,29 +116,38 @@ describe('FilterObject', () => {
   const queryObject: QueryObject = {
     id: '1',
     combinator: 'AND',
-    rules: [],
+    rules: [
+      {
+        id: '1',
+        field: 'Age',
+        operator: '=',
+        value: '10',
+        isValid: true,
+        residentId: '2',
+        nonResidentId: '3',
+        errorMessage: 'Please enter a valid age using digits only',
+        placeHolder: 'E.g 10',
+      },
+    ],
   };
-
-  const requiredFields = [
-    {
-      id: '1',
-      field: 'Level',
-      operator: '=',
-      value: 'Grade I',
-    },
-  ];
-
-  const filteredQueryObject = {
+  const filteredRuleObject: QueryObject = {
     id: '1',
     combinator: 'AND',
-    rules: requiredFields,
+    rules: [
+      {
+        id: '1',
+        field: 'Age',
+        operator: '=',
+        value: '10',
+      } as Rule,
+    ],
   };
 
+  const requiredKeys = ['id', 'field', 'operator', 'value'];
+
   it('returns the specified key value pairs only i.e. (id, field, operator, value)', () => {
-    const filteredObject = filterObject(queryObject, [
-      { id: '1', field: 'Level', operator: '=', value: 'Grade I' },
-    ] as Rule[]);
-    expect(filteredObject).toEqual(filteredQueryObject as QueryObject);
+    const filteredObject = filterRule(queryObject, requiredKeys);
+    expect(filteredObject).toEqual(filteredRuleObject);
   });
 });
 
