@@ -1,12 +1,14 @@
 import React from 'react';
-import { filterObject } from '../helper';
+import { filterRule } from '../helper';
 import { QueryObject } from '../types';
 
 interface QueryProps {
   queryObject: QueryObject;
 }
 const QueryOutput: React.FunctionComponent<QueryProps> = ({ ...props }) => {
-  const object = filterObject(props.queryObject);
+  const requiredKeys = ['id', 'field', 'operator', 'value'];
+
+  const object = filterRule(props.queryObject, requiredKeys);
 
   return (
     <div>

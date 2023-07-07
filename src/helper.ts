@@ -105,24 +105,32 @@ const validateInput = (
   return { isValid, errorMessage };
 };
 
-const filterObject = (queryObject: QueryObject): QueryObject => {
-  const filteredObject = {
-    ...queryObject,
-    rules: queryObject.rules.map((item) => {
-      const {
-        isValid,
-        errorMessage,
-        placeHolder,
-        residentId,
-        nonResidentId,
-        ...newRuleObject
-      } = item;
+const filterRule = (
+  queryObject: QueryObject,
+  requiredKeys: string[]
+): Partial<QueryObject> => {
+  interface FilteredRulesObject {
+    [key: string]: string | boolean;
+  }
 
-      return newRuleObject;
-    }),
+  const filteredRules = queryObject.rules.map((rule) => {
+    const rulesObject: FilteredRulesObject = {};
+
+    requiredKeys.forEach((key) => {
+      if (key in rule) {
+        rulesObject[key as keyof FilteredRulesObject] = rule[key as keyof Rule];
+      }
+    });
+
+    return rulesObject;
+  });
+
+  const returnedQueryObject = {
+    ...queryObject,
+    rules: filteredRules as Partial<Rule>,
   };
 
-  return filteredObject as QueryObject;
+  return returnedQueryObject as Partial<QueryObject>;
 };
 
 const setDefaultValue = (field: string): string | boolean => {
@@ -144,6 +152,6 @@ export {
   deleteRule,
   changeInputPlaceHolder,
   validateInput,
-  filterObject,
+  filterRule,
   setDefaultValue,
 };
