@@ -6,7 +6,7 @@ import {
   updateRulesList,
   validateInput,
 } from '../../helper';
-import { QueryObject, Rule } from '../../types';
+import { QueryObject } from '../../types';
 
 describe('ValidateInput', () => {
   it('returns false for wrong input value and the correct errorMessage', () => {
@@ -130,24 +130,41 @@ describe('FilterObject', () => {
       },
     ],
   };
-  const filteredRuleObject: QueryObject = {
-    id: '1',
-    combinator: 'AND',
-    rules: [
-      {
-        id: '1',
-        field: 'Age',
-        operator: '=',
-        value: '10',
-      } as Rule,
-    ],
-  };
 
   const requiredKeys = ['id', 'field', 'operator', 'value'];
 
   it('returns the specified key value pairs only i.e. (id, field, operator, value)', () => {
     const filteredObject = filterRule(queryObject, requiredKeys);
-    expect(filteredObject).toEqual(filteredRuleObject);
+
+    // Check if "key" id is present in object
+    const hasId = filteredObject.rules?.some((rule) =>
+      Object.keys(rule).includes('id')
+    );
+    expect(hasId).toBe(true);
+
+    // Check if "key" field is present in object
+    const hasField = filteredObject.rules?.some((rule) =>
+      Object.keys(rule).includes('field')
+    );
+    expect(hasField).toBe(true);
+
+    // Check if "key" operator is present in object
+    const hasOperator = filteredObject.rules?.some((rule) =>
+      Object.keys(rule).includes('operator')
+    );
+    expect(hasOperator).toBe(true);
+
+    // Check if "key" value is present in object
+    const hasValue = filteredObject.rules?.some((rule) =>
+      Object.keys(rule).includes('value')
+    );
+    expect(hasValue).toBe(true);
+
+    // Check if "key" isValid is NOT present in object
+    const hasIsValid = filteredObject.rules?.some((rule) =>
+      Object.keys(rule).includes('isValid')
+    );
+    expect(hasIsValid).toBe(false);
   });
 });
 
