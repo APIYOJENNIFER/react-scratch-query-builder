@@ -21,6 +21,7 @@
     "sourceType": "module",
     "project": ["tsconfig.json"]
   },
+  "ignorePatterns": ["cypress/"],
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "newline-before-return": "error",
