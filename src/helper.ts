@@ -108,13 +108,17 @@ const validateInput = (
 const filterRule = (
   queryObject: QueryObject,
   requiredKeys: string[]
-): QueryObject => {
+): Partial<QueryObject> => {
+  interface FilteredRulesObject {
+    [key: string]: string | boolean;
+  }
+
   const filteredRules = queryObject.rules.map((rule) => {
-    const rulesObject: Record<string, string | boolean> = {};
+    const rulesObject: FilteredRulesObject = {};
 
     requiredKeys.forEach((key) => {
       if (key in rule) {
-        rulesObject[key as string] = rule[key as keyof Rule];
+        rulesObject[key as keyof FilteredRulesObject] = rule[key as keyof Rule];
       }
     });
 
@@ -123,10 +127,10 @@ const filterRule = (
 
   const returnedQueryObject = {
     ...queryObject,
-    rules: filteredRules,
+    rules: filteredRules as Partial<Rule>,
   };
 
-  return returnedQueryObject as unknown as QueryObject;
+  return returnedQueryObject as Partial<QueryObject>;
 };
 
 const setDefaultValue = (field: string): string | boolean => {
