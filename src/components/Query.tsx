@@ -95,6 +95,7 @@ const Query: React.FunctionComponent = () => {
       <div className="App-top-section">
         <Logical onLogicalChange={(event) => handleLogicalChange(event)} />
         <GeneralButton
+          testId="btn-add-rule"
           className="btn-add-rule"
           buttonText="ADD RULE"
           onClick={addRule}

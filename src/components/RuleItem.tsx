@@ -40,6 +40,7 @@ const RuleItem: React.FunctionComponent<RuleItemProps> = ({ ...props }) => (
           nonResidentId={props.nonResidentId}
         />
         <GeneralButton
+          testId="btn-delete-rule"
           className="btn-delete-rule"
           buttonText="DELETE"
           onClick={props.onDelete}
