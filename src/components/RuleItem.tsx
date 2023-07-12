@@ -21,7 +21,7 @@ interface RuleItemProps {
   operator: string;
 }
 const RuleItem: React.FunctionComponent<RuleItemProps> = ({ ...props }) => (
-  <div className="rule-item">
+  <div data-testid="rule-item" className="rule-item">
     <Field onFieldChange={props.onFieldChange} />
     <Operator
       onOperatorChange={props.onOperatorChange}
