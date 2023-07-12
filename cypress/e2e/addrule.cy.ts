@@ -1,78 +1,76 @@
 describe('Query Builder', () => {
-  it('user can add rule by clicking the ADD RULE button', () => {
+  beforeEach(() => {
     cy.visit('http://localhost:3000');
+    cy.get('[data-testid="btn-add-rule"]').click();
+  });
 
-    // click the ADD RULE button
-    cy.get('.App-top-section > [data-testid = "general-button"]').click();
-
-    // select logical option (OR)
+  it('user can toggle the logical option', () => {
     cy.get('[data-testid="logical-select"]')
       .select('OR')
       .should('have.value', 'OR');
+  });
 
-    // select the first field option (First Name), select the > operator and type in a value
-    cy.get('[data-testid="field-select"]').eq(0).select('First Name');
+  it('user can add rule by clicking the ADD RULE button', () => {
+    cy.get('[data-testid="field-select"]').should('exist');
+    cy.get('[data-testid="operator-select"]').should('exist');
+    cy.get('[data-testid="general-input"]').should('exist');
+    cy.get('[data-testid="btn-delete-rule"]').should('exist');
+  });
 
-    cy.get('[data-testid="operator-select"]').eq(0).select('>');
+  it('user can delete a rule', () => {
+    cy.get('[data-testid="btn-delete-rule"]').click();
+    cy.get('[data-testid="field-select"]').should('not.exist');
+    cy.get('[data-testid="operator-select"]').should('not.exist');
+    cy.get('[data-testid="general-input"]').should('not.exist');
+    cy.get('[data-testid="btn-delete-rule"]').should('not.exist');
+  });
 
-    cy.get('[data-testid="general-input"]')
-      .eq(0)
-      .type('Jane')
-      .should('contain.value', 'Jane');
-
-    //Add a second rule
-    cy.get('.App-top-section > [data-testid = "general-button"]').click();
-
-    // select AND logical option
-    cy.get('[data-testid="logical-select"]')
-      .select('AND')
-      .should('have.value', 'AND');
-
-    // select field option (Last Name), type in a wrong value, and check if the right error message is displayed
+  it('user can select a field', () => {
     cy.get('[data-testid="field-select"]')
-      .eq(1)
-      .select('Last Name')
-      .should('have.value', 'Last Name');
-    cy.get('[data-testid="general-input"]').eq(1).type('Doe22');
+      .select('Age')
+      .should('have.value', 'Age');
+  });
 
+  it('user can select an operator', () => {
+    cy.get('[data-testid="operator-select"]')
+      .select('>')
+      .should('have.value', '>');
+  });
+
+  it('user can type in a value', () => {
+    cy.get('[data-testid="general-input"]')
+      .type('John')
+      .should('have.value', 'John');
+  });
+
+  it('can validate input and display the right error message', () => {
+    cy.get('[data-testid="general-input"]').type('John12');
     cy.get('[data-testid="error-message"]').should(
       'have.text',
       'Name should contain alphabetical characters only'
     );
+  });
 
-    // add a third rule
-    cy.get('.App-top-section > [data-testid = "general-button"]').click();
+  it('displays a checkbox option if selected field is "Has Graduated"', () => {
+    cy.get('[data-testid="field-select"]').select('Has Graduated');
+    cy.get('[data-testid="checkbox-input"]').should('exist');
+    cy.get('[data-testid="general-input"]').should('not.exist');
+    cy.get('[data-testid="radio-input"]').should('not.exist');
+  });
 
-    // select field option (Age) and check if it has the right placeholder text
-    cy.get('[data-testid="field-select"]').eq(2).select('Age');
-    cy.get('[data-testid="general-input"]')
-      .eq(2)
-      .should('have.attr', 'placeholder', 'E.g 10');
-
-    // add a fourth rule
-    cy.get('.App-top-section > [data-testid = "general-button"]').click();
-    // select field option (Housing)
-    cy.get('[data-testid="field-select"]').eq(3).select('Housing');
-    cy.get('[data-testid="non-resident"]')
-      .check()
-      .should('have.value', 'Non-Resident');
-
-    // add a fifth rule
-    cy.get('.App-top-section > [data-testid = "general-button"]').click();
-
-    // select field option (Has Graduated), assert value before and after checking
-    cy.get('[data-testid="field-select"]').eq(4).select('Has Graduated');
+  it('user can check an option if selected field is "Has Graduated"', () => {
+    cy.get('[data-testid="field-select"]').select('Has Graduated');
     cy.get('[data-testid="checkbox-input"]')
       .should('not.be.checked')
       .check()
       .should('be.checked');
+  });
 
-    // add a six rule
-    cy.get('.App-top-section > [data-testid = "general-button"]').click();
-
-    // delete the six rule
-    cy.get('.div-input-error > div > [data-testid="general-button"]')
-      .eq(5)
-      .click();
+  it('user can select the right radio option if field is "Housing"', () => {
+    cy.get('[data-testid="field-select"]').select('Housing');
+    cy.get('[data-testid="non-resident"]')
+      .check()
+      .should('have.value', 'Non-Resident');
+    cy.get('[data-testid="resident"]').should('not.be.checked');
   });
 });
