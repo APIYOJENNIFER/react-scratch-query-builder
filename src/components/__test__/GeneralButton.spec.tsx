@@ -7,22 +7,28 @@ describe('GeneralButton', () => {
     const onClick = jest.fn();
     render(
       <GeneralButton
+        testId="btn-general"
         className="test"
         buttonText="BUTTON TEXT"
         onClick={onClick}
       />
     );
-    expect(screen.getByTestId('general-button')).toBeInTheDocument();
+    expect(screen.getByTestId('btn-general')).toBeInTheDocument();
     expect(screen.getByText(/BUTTON TEXT/)).toBeInTheDocument();
   });
 
   it('responds to clicks', () => {
     const onClick = jest.fn();
     render(
-      <GeneralButton className="test" buttonText="test" onClick={onClick} />
+      <GeneralButton
+        testId="btn-general"
+        className="test"
+        buttonText="test"
+        onClick={onClick}
+      />
     );
 
-    fireEvent.click(screen.getByTestId('general-button'));
+    fireEvent.click(screen.getByTestId('btn-general'));
     expect(onClick).toHaveBeenCalled();
   });
 });
