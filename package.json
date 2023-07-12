@@ -7,6 +7,7 @@
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "test": "jest",
+    "cypress": "./node_modules/.bin/cypress open",
     "lint": "tsc --noEmit && npx eslint src",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "npx prettier src --check",
