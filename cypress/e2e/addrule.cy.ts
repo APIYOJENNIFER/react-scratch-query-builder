@@ -30,6 +30,13 @@ describe('Query Builder', () => {
       });
   });
 
+  it('can display the right error message if user types in wrong input', () => {
+    cy.get('[data-testid="general-input"]').type('John12');
+    cy.get('[data-testid="error-message"]')
+      .should('exist')
+      .should('have.html', 'Name should contain alphabetical characters only');
+  });
+
   it('user can delete a rule', () => {
     cy.get('[data-testid="btn-add-rule"]').click();
     cy.get('[data-testid="btn-delete-rule"]').eq(1).click();
