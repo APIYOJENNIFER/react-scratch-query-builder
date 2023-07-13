@@ -31,9 +31,11 @@ describe('Query Builder', () => {
   });
 
   it('user can delete a rule', () => {
-    cy.get('[data-testid="btn-delete-rule"]').click();
+    cy.get('[data-testid="btn-add-rule"]').click();
+    cy.get('[data-testid="btn-delete-rule"]').eq(1).click();
 
-    cy.get('[data-testid="rule-item"]').should('not.exist');
+    cy.get('[data-testid="rule-item"]').eq(1).should('not.exist');
+    cy.get('[data-testid="query-output"]').contains('"field": "First Name"');
 
     cy.get('[data-testid="query-output"]')
       .should('exist')
@@ -41,7 +43,7 @@ describe('Query Builder', () => {
       .then((text) => {
         const queryObject = JSON.parse(text);
 
-        cy.wrap(queryObject.rules).should('have.length', 0);
+        cy.wrap(queryObject.rules).should('have.length', 1);
       });
   });
 });
