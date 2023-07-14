@@ -13,7 +13,9 @@ const QueryOutput: React.FunctionComponent<QueryProps> = ({ ...props }) => {
   return (
     <div>
       <h3 className="json">JSON</h3>
-      <pre className="query-output">{JSON.stringify(object, null, 2)}</pre>
+      <pre data-testid="query-output" className="query-output">
+        {JSON.stringify(object, null, 2)}
+      </pre>
     </div>
   );
 };

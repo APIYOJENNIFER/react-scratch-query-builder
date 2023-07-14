@@ -21,7 +21,7 @@ interface RuleItemProps {
   operator: string;
 }
 const RuleItem: React.FunctionComponent<RuleItemProps> = ({ ...props }) => (
-  <div className="rule-item">
+  <div data-testid="rule-item" className="rule-item">
     <Field onFieldChange={props.onFieldChange} />
     <Operator
       onOperatorChange={props.onOperatorChange}
@@ -40,6 +40,7 @@ const RuleItem: React.FunctionComponent<RuleItemProps> = ({ ...props }) => (
           nonResidentId={props.nonResidentId}
         />
         <GeneralButton
+          testId="btn-delete-rule"
           className="btn-delete-rule"
           buttonText="DELETE"
           onClick={props.onDelete}
